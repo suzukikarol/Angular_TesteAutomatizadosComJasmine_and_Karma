@@ -12,6 +12,11 @@ describe(UniqueIdService.name, () => {
      should generated id when called with prefix`, () => {
         const id = service.generatedUniqueIdWithPrefix('app');
         expect(id.startsWith('app-')).toBeTrue();
+
+        //3 métodos para testar estados booleanos
+        //expect(true).toBeTrue();//verificar tipos primitivos/literal
+        //expect(true).toBe(true);//compara se um tipo é a mesma referencia
+        //expect(true).toBeTruthy();//é o mais generico de todos
     });
 
     it(`#${UniqueIdService.prototype.generatedUniqueIdWithPrefix.name}
@@ -34,7 +39,9 @@ describe(UniqueIdService.name, () => {
     should throw when with empty`, () => {
         const emptyValues = [null, undefined, ''];
         emptyValues.forEach(emptyValues => {
-            expect(() => service.generatedUniqueIdWithPrefix(emptyValues)).toThrow();
+            expect(() => service.generatedUniqueIdWithPrefix(emptyValues))
+                .withContext(`Empty value : ${emptyValues}`)
+                .toThrow();
         });
     });
 });
