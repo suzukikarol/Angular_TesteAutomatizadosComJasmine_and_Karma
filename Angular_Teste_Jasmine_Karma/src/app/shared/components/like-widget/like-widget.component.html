@@ -1,0 +1,12 @@
+<div class="like-widget-container" (click)="like()" (keyup.enter)="like()">
+    <fa-icon tabindex="0" [attr.aria-describedy]="id" role="1x" [icon]="fonts.faThumbsUp">
+    </fa-icon>
+    <span [attr.id]="id" [attr.aria-label]="likes + 'people like'" class="like-counter" aria-atomic="true"
+        aria-live="true">{{ likes }}</span>
+</div>
+
+<!--
+    [attr.aria-describedy]="id" : é o responsável por linkar o span com o icon
+                                    quando você usar o leitor de tela, será
+                                    possível ouvir : "BUTON nº people liked"
+-->

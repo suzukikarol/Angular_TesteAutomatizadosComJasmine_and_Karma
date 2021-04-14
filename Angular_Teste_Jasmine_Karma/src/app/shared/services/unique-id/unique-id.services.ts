@@ -6,13 +6,15 @@ export class UniqueIdService {
 
     private numberOfGeneratedIds = 0;
 
+    private validId = /^[A-Za-z]+[\w\-\:\.]*$/;
+
     /**Serviço reponsável por gerar id's únicos e retorna a string concatenando com o id gerado.
      * passando um prefixo
      * retornando um prefixo com o id gerado
      * generatedUniqueIdWithPrefix
      */
     public generatedUniqueIdWithPrefix(prefix: string): string {
-        if (!prefix) {
+        if (!prefix || !this.validId.test(prefix)) {
             throw Error('Prefix can not be empty');
         }
         const uniqueId = this.generatedUniqueId();
